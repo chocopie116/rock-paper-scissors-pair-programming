@@ -11,7 +11,39 @@ $(function(){
     $("#myrspimg").attr("src", "img/" + $(this).attr("id") + ".png");
     $("#bobrspimg").attr("src", "img/" + opponentHand + ".png");
     $("#result").text(RESULT_MESSAGE[result]);
+    moveYourHand($("#myrspimg"));
+    moveTekiHand($("#bobrspimg"));
   });
+
+  /**
+   * @param {jQuery} jQueryオブジェクトを渡す
+   */
+  function moveYourHand($target) {
+      $target.animate({
+          marginLeft: '-=200px'
+      })
+      .animate({
+          marginLeft: '+=300px'
+      }, 500)
+      .animate({
+        marginLeft: '-=100px'
+      }, 300);
+  }
+
+  /**
+   * @param {jQuery} jQueryオブジェクトを渡す
+   */
+  function moveTekiHand($target) {
+      $target.animate({
+          marginRight: '-=200px'
+      })
+      .animate({
+          marginRight: '+=300px'
+      }, 500)
+      .animate({
+        marginRight: '-=100px'
+      }, 300);
+  }
 
   function bobHand() {
     return HAND_TYPE[ Math.floor(Math.random() * 3) ];
